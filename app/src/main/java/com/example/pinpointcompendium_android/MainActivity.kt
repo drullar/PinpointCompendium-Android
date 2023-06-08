@@ -2,18 +2,16 @@ package com.example.pinpointcompendium_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import org.w3c.dom.Text
+import com.example.pinpointcompendium_android.fragments.ServerSetFragment
+import com.example.pinpointcompendium_android.fragments.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+        supportFragmentManager.beginTransaction()
+            .add(R.id.main_fragment_container, ServerSetFragment())
+            .commit()
     }
 }
 

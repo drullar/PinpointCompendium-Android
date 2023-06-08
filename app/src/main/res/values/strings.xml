@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PinpointCompendium-android</string>
+    <string name="set_server_description">Set Remote Sync Server Hostname (optional)</string>
+    <string name="server_hint">myserver.com:port</string>
+    <string name="submit_button">Submit</string>
+    <string name="skip_button">Skip</string>
 </resources>

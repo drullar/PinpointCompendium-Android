@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="notifications_category"
+        app:title="Известия">
+        <SwitchPreferenceCompat
+            app:key="notifications"
+            app:title="Активиране на известията" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="books_category"
+        app:title="Изберете категория">
+        <CheckBoxPreference
+            app:defaultValue="true"
+            app:key="scientific_literature"
+            app:title="Научна литература" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
