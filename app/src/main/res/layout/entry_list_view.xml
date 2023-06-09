@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_skin">
+
+    <LinearLayout
+        android:id="@+id/entry_identifiers_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/entry_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_text_snippet_24" />
+
+        <TextView
+            android:id="@+id/entry_type_descriptor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/entry_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_below="@id/entry_identifiers_layout"
+        android:hint="Name for the entry"
+        android:layout_gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/entry_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/entry_description_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_below="@id/entry_name_layout"
+        android:hint="Description for the entry"
+        android:layout_gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/entry_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Image Entry Specific Elements-->
+    <LinearLayout
+        android:id="@+id/text_entry_specific_items"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/entry_description_layout"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <!--  TODO add something here in the future <-->
+    </LinearLayout>
+
+    <!-- Image Entry Specific Elements-->
+    <LinearLayout
+        android:id="@+id/image_entry_specific_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_description_layout"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/add_image_buttons"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/add_from_gallery_button"
+                android:text="@string/from_gallery"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <Button
+                android:id="@+id/add_from_camera_button"
+                android:text="@string/from_camera"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:contentDescription="@+id/entry_description.text" />
+    </LinearLayout>
+</RelativeLayout>

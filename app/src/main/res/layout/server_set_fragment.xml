@@ -36,7 +36,9 @@
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+            android:singleLine="true" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -46,8 +48,8 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/white"
-        android:text="@string/submit_button"
-
+        android:text="@string/submit"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,14 +61,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="@color/white"
-        android:text="@string/skip_button"
+        android:text="@string/skip"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toEndOf="@+id/server_submit_button"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:onClick="goToLandingPage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

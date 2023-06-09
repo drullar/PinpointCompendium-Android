@@ -2,6 +2,21 @@
     <string name="app_name">PinpointCompendium-android</string>
     <string name="set_server_description">Set Remote Sync Server Hostname (optional)</string>
     <string name="server_hint">myserver.com:port</string>
-    <string name="submit_button">Submit</string>
-    <string name="skip_button">Skip</string>
+    <string name="submit">Submit</string>
+    <string name="skip">Skip</string>
+    <string name="no_data_message">It looks like there is nothing to show.
+    Start by adding a new destination</string>
+    <string name="from_gallery">Browse Gallery</string>
+    <string name="from_camera">Capture now</string>
+    <string name="create">Create</string>
+    <string name="prague">Prague</string>
+    <string name="sofia">Sofia</string>
+    <string name="berlin">Berlin</string>
+    <string name="plus">+</string>
+    <string-array name="entry_types">
+        <item>Text Entry</item>
+        <item>Image Entry</item>
+    </string-array>
+
+
 </resources>
