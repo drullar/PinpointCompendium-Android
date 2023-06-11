@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.models.entry.Entry
-import com.example.pinpointcompendium_android.models.entry.ImageEntry
+import com.example.pinpointcompendium_android.models.entry.AlbumEntry
 import com.example.pinpointcompendium_android.models.entry.TextEntry
 import org.w3c.dom.Text
 
@@ -33,11 +34,11 @@ class EntryListAdapter(context: Context, var entries: List<Entry>) :
         var entryDrawable = view?.findViewById<ImageView>(R.id.entry_icon)
         var entryViewIcon =
             currentEntry?.entryDrawableId?.let { entryDrawable?.setImageResource(it) }
-        var entryViewDescriptor = view?.findViewById<TextView>(R.id.entry_type_descriptor)?.apply {
-            text = currentEntry?.entryTypeDescriptor
+        var nameHint = view?.findViewById<EditText>(R.id.entry_name)?.apply {
+            hint = currentEntry?.nameHint
         }
         when (currentEntry) {
-            is ImageEntry -> {
+            is AlbumEntry -> {
                 view?.findViewById<LinearLayout>(currentEntry.entrySpecificItemsLayout)?.visibility =
                     View.VISIBLE
             }

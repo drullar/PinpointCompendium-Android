@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.pinpointcompendium_android.R
 
 class ServerSetFragment : BaseFragment() {
-
+    //    TODO Persist the user input as Preference
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

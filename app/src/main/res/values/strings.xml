@@ -13,10 +13,13 @@
     <string name="sofia">Sofia</string>
     <string name="berlin">Berlin</string>
     <string name="plus">+</string>
+    <string name="text">Text</string>
     <string-array name="entry_types">
         <item>Text Entry</item>
-        <item>Image Entry</item>
+        <item>Album Entry</item>
     </string-array>
-
+    <string name="entry_name_identification">Name identification</string>
+    <string name="text_title">Text Title</string>
+    <string name="album_name">Album name</string>
 
 </resources>

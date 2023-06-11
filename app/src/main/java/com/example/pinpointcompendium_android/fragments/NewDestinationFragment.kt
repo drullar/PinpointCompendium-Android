@@ -1,31 +1,30 @@
 package com.example.pinpointcompendium_android.fragments
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.adapters.EntryListAdapter
+import com.example.pinpointcompendium_android.listeners.ImageListener
 import com.example.pinpointcompendium_android.models.Destination
+import com.example.pinpointcompendium_android.models.entry.AlbumEntry
 import com.example.pinpointcompendium_android.models.entry.Entry
-import com.example.pinpointcompendium_android.models.entry.ImageEntry
 import com.example.pinpointcompendium_android.models.entry.TextEntry
 import com.google.android.material.textfield.TextInputEditText
 
 
-class NewDestinationFragment : BaseFragment() {
+open class NewDestinationFragment : BaseFragment() {
     lateinit var spinner: Spinner
     private var entries = ArrayList<Entry>()
-
     private var spinnerAdapter: ArrayAdapter<CharSequence>? = null
     private var entryListAdapter: EntryListAdapter? = null
+    var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,8 +50,7 @@ class NewDestinationFragment : BaseFragment() {
                 submitDestination(v)
             }
             R.id.add_from_gallery_button -> {
-                var galleryIntent = Intent()
-                // TODO Implement Browse Gallery Intent
+                openImageSelectForResult()
             }
             R.id.add_from_camera_button -> {
                 var cameraIntent = Intent()
@@ -65,17 +63,18 @@ class NewDestinationFragment : BaseFragment() {
         Log.v("ButtonClick", "Add entry button clicked")
         var selectedEntryType =
             view?.findViewById<Spinner>(R.id.new_destination_entries_spinner)?.selectedItem.toString()
-        Log.v("Data", selectedEntryType)
+        var entryInstance: Entry? = null
         when (selectedEntryType) {
             "Text Entry" -> {
-                Log.v("TextEntry", "Add Text Entry")
-                entries.add(TextEntry())
-                entryListAdapter?.notifyDataSetChanged()
+                entryInstance = TextEntry()
             }
-            "Image Entry" -> {
-                entries.add(ImageEntry())
-                entryListAdapter?.notifyDataSetChanged()
+            "Album Entry" -> {
+                entryInstance = AlbumEntry()
             }
+        }
+        if (entryInstance != null) {
+            entries.add(entryInstance)
+            entryListAdapter?.notifyDataSetChanged()
         }
     }
 
@@ -85,14 +84,10 @@ class NewDestinationFragment : BaseFragment() {
             view?.findViewById<TextInputEditText>(R.id.destination_name_input)
         var destinationName = destinationNameTextView?.text
         if (destinationName != null) {
-            Destination.Builder()
-                .Name(destinationName.toString())
-                .Description(
-                    view?.findViewById<TextInputEditText>
-                        (R.id.destination_description_input)?.text.toString()
-                )
-                .Entries(entries)
-                .build()
+            Destination().apply {
+                name = destinationName.toString()
+                entries = this@NewDestinationFragment.entries
+            }
         } else {
             Toast.makeText(context, "Destination name can not be empty", Toast.LENGTH_SHORT)
             destinationNameTextView?.requestFocus()
@@ -110,12 +105,13 @@ class NewDestinationFragment : BaseFragment() {
                 setOnClickListener(this@NewDestinationFragment)
             }
 
-        var mediaFromGalleryButton = view.findViewById<Button>(R.id.add_from_gallery_button).apply {
-            setOnClickListener(this@NewDestinationFragment)
-        }
+        var mediaFromGalleryButton =
+            view.findViewById<Button>(R.id.add_from_gallery_button)?.apply {
+                setOnClickListener(this@NewDestinationFragment)
+            }
 
         var mediaFromCameraGalleryButton =
-            view.findViewById<Button>(R.id.add_from_camera_button).apply {
+            view.findViewById<Button>(R.id.add_from_camera_button)?.apply {
                 setOnClickListener(this@NewDestinationFragment)
             }
     }
@@ -133,4 +129,19 @@ class NewDestinationFragment : BaseFragment() {
             .apply { adapter = spinnerAdapter }
     }
 
+    var SELECT_PICTURE = 200
+    fun openImageSelectForResult() {
+        var imageSelectIntent = Intent().apply {
+            type = "image/*"
+            action = Intent.ACTION_GET_CONTENT
+        }
+        startActivityForResult(imageSelectIntent, SELECT_PICTURE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK && requestCode == SELECT_PICTURE) {
+            var imageUri = data?.data
+            view?.findViewById<ImageView>(R.id.test_image)?.setImageURI(imageUri)
+        }
+    }
 }
