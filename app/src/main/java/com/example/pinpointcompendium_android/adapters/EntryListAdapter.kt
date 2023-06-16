@@ -1,23 +1,23 @@
 package com.example.pinpointcompendium_android.adapters
 
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
+import androidx.fragment.app.Fragment
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.models.entry.Entry
 import com.example.pinpointcompendium_android.models.entry.AlbumEntry
-import com.example.pinpointcompendium_android.models.entry.TextEntry
-import org.w3c.dom.Text
 
 
-class EntryListAdapter(context: Context, var entries: List<Entry>) :
-    ArrayAdapter<Entry>(context, 0, entries) {
+class EntryListAdapter(
+    context: Context,
+    var entries: ArrayList<Entry>
+) : ArrayAdapter<Entry>(context, 0, entries) {
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -44,4 +44,17 @@ class EntryListAdapter(context: Context, var entries: List<Entry>) :
             }
         }
     }
+
+    fun updateAlbumEntry(entryInList: AlbumEntry?, modifiedEntry: AlbumEntry?, view: View?) {
+        if (entryInList != null && modifiedEntry != null) {
+            entries.set(entries.indexOf(entryInList), modifiedEntry)
+            notifyDataSetChanged()
+            Log.v("URI", modifiedEntry.imageUri.toString())
+            view?.findViewById<ImageView>(R.id.imageEntityImage)?.apply {
+                setImageURI(modifiedEntry.imageUri)
+            }
+
+        }
+    }
+
 }

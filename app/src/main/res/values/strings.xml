@@ -21,5 +21,6 @@
     <string name="entry_name_identification">Name identification</string>
     <string name="text_title">Text Title</string>
     <string name="album_name">Album name</string>
+    <string name="destination_description_hint">Ex. Berlin trip with friends(optional)</string>
 
 </resources>

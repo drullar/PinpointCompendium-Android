@@ -2,11 +2,12 @@ package com.example.pinpointcompendium_android.fragments
 
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
 import com.example.pinpointcompendium_android.activities.BaseActivity
 import com.example.pinpointcompendium_android.activities.FragmentChangeListener
 
-abstract class BaseFragment : Fragment(), OnClickListener {
+abstract class BaseFragment : Fragment(), View.OnClickListener {
     var fragmentChangeListener: BaseActivity? = null
 
     init {
@@ -29,4 +30,5 @@ abstract class BaseFragment : Fragment(), OnClickListener {
             Initialize buttons here and set their onClickListener(this)
          */
     }
+
 }

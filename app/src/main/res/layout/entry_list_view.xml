@@ -52,30 +52,16 @@
         android:visibility="gone"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/add_image_buttons"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/add_image_buttons"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
 
-            <Button
-                android:id="@+id/add_from_gallery_button"
-                android:text="@string/from_gallery"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="20dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
-
-            <Button
-                android:id="@+id/add_from_camera_button"
-                android:text="@string/from_camera"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
-        </RelativeLayout>
+        <!--        </RelativeLayout>-->
 
         <ImageView
+            android:id="@+id/imageEntityImage"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:contentDescription="@+id/entry_description.text" />

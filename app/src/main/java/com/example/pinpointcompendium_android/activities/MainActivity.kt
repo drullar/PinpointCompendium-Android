@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.fragments.LandingPageFragment
+import com.example.pinpointcompendium_android.fragments.NewDestinationFragment
 import com.example.pinpointcompendium_android.fragments.ServerSetFragment
 
 class MainActivity : BaseActivity() {
@@ -13,12 +14,13 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setFragmentContainerView(R.id.main_fragment_container)
-        if (isServerSet)
-            addFragment(fragmentContainerView.id, LandingPageFragment())
-        else {
-            addFragment(fragmentContainerView.id, ServerSetFragment())
-            isServerSet = true
-        }
+        addFragment(fragmentContainerView.id, NewDestinationFragment())
+//        if (isServerSet)
+//            addFragment(fragmentContainerView.id, LandingPageFragment())
+//        else {
+//            addFragment(fragmentContainerView.id, ServerSetFragment())
+//            isServerSet = true
+//        }
 
     }
 
