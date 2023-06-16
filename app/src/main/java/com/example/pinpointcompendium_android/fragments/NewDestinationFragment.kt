@@ -1,8 +1,5 @@
 package com.example.pinpointcompendium_android.fragments
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.adapters.EntryListAdapter
 import com.example.pinpointcompendium_android.models.Destination
@@ -19,10 +17,12 @@ import com.example.pinpointcompendium_android.models.entry.AlbumEntry
 import com.example.pinpointcompendium_android.models.entry.Entry
 import com.example.pinpointcompendium_android.models.entry.TextEntry
 import com.google.android.material.textfield.TextInputEditText
-import java.io.File
 
-
-class NewDestinationFragment : BaseFragment() {
+@Deprecated(
+    "This is an old implementation." +
+            " To be removed after scraping whatever can be scraped"
+)
+class NewDestinationFragment : Fragment() {
     lateinit var spinner: Spinner
     private var entries = ArrayList<Entry>()
     private var spinnerAdapter: ArrayAdapter<CharSequence>? = null
@@ -44,51 +44,51 @@ class NewDestinationFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.new_destination_fragment, container, false)
+    ): View? = inflater.inflate(R.layout.create_destination_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setButtonsOnClickListener(view)
+//        setButtonsOnClickListener(view)
         configureSpinner(view)
         entryListAdapter = context?.let { EntryListAdapter(it, entries) }
-        var entriesListView = view.findViewById<ListView>(R.id.new_destination_entries_list_view)
-            .apply { adapter = entryListAdapter }
+//        var entriesListView = view.findViewById<ListView>(R.id.create_destination_fragment)
+//            .apply { adapter = entryListAdapter }
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.new_destination_add_entry_button -> {
-                addEntry(v)
-            }
-            R.id.submit_destination_button -> {
-                submitDestination(v)
-            }
-            R.id.add_from_gallery_button -> {
-                openGalleryForResult()
-            }
-        }
-    }
+//    override fun onClick(v: View?) {
+//        when (v?.id) {
+//            R.id.new_destination_add_entry_button -> {
+//                addEntry(v)
+//            }
+//            R.id.submit_destination_button -> {
+//                submitDestination(v)
+//            }
+//            R.id.add_from_gallery_button -> {
+//                openGalleryForResult()
+//            }
+//        }
+//    }
 
-    private fun addEntry(v: View) {
-        Log.v("ButtonClick", "Add entry button clicked")
-        var selectedEntryType =
-            view?.findViewById<Spinner>(R.id.new_destination_entries_spinner)?.selectedItem.toString()
-        var entryInstance: Entry? = null
-        when (selectedEntryType) {
-            "Text Entry" -> {
-                entryInstance = TextEntry()
-            }
-            "Album Entry" -> {
-                entryInstance = AlbumEntry()
-                lastAddedEntry = entryInstance
-                view?.findViewById<Button>(R.id.add_from_gallery_button)?.visibility = View.VISIBLE
-            }
-        }
-        if (entryInstance != null) {
-            entries.add(entryInstance)
-            entryListAdapter?.notifyDataSetChanged()
-        }
-    }
+//    private fun addEntry(v: View) {
+//        Log.v("ButtonClick", "Add entry button clicked")
+//        var selectedEntryType =
+//            view?.findViewById<Spinner>(R.id.new_destination_entries_spinner)?.selectedItem.toString()
+//        var entryInstance: Entry? = null
+//        when (selectedEntryType) {
+//            "Text Entry" -> {
+//                entryInstance = TextEntry()
+//            }
+//            "Album Entry" -> {
+//                entryInstance = AlbumEntry()
+//                lastAddedEntry = entryInstance
+//                view?.findViewById<Button>(R.id.add_from_gallery_button)?.visibility = View.VISIBLE
+//            }
+//        }
+//        if (entryInstance != null) {
+//            entries.add(entryInstance)
+//            entryListAdapter?.notifyDataSetChanged()
+//        }
+//    }
 
     private fun submitDestination(v: View) {
         Log.v("ButtonClick", "Submit destination button clicked")
@@ -106,21 +106,21 @@ class NewDestinationFragment : BaseFragment() {
         }
     }
 
-    override fun setButtonsOnClickListener(view: View) {
-        var addEntryButton =
-            view.findViewById<Button>(R.id.new_destination_add_entry_button).apply {
-                setOnClickListener(this@NewDestinationFragment)
-            }
-
-        var submitDestinationButton =
-            view.findViewById<Button>(R.id.submit_destination_button).apply {
-                setOnClickListener(this@NewDestinationFragment)
-            }
-        var getImageFromGallery =
-            view.findViewById<Button>(R.id.add_from_gallery_button).apply {
-                setOnClickListener(this@NewDestinationFragment)
-            }
-    }
+//    override fun setButtonsOnClickListener(view: View) {
+//        var addEntryButton =
+//            view.findViewById<Button>(R.id.new_destination_add_entry_button).apply {
+//                setOnClickListener(this@NewDestinationFragment)
+//            }
+//
+//        var submitDestinationButton =
+//            view.findViewById<Button>(R.id.submit_destination_button).apply {
+//                setOnClickListener(this@NewDestinationFragment)
+//            }
+//        var getImageFromGallery =
+//            view.findViewById<Button>(R.id.add_from_gallery_button).apply {
+//                setOnClickListener(this@NewDestinationFragment)
+//            }
+//    }
 
     private fun configureSpinner(view: View) {
         spinnerAdapter = context?.let {
@@ -131,8 +131,8 @@ class NewDestinationFragment : BaseFragment() {
             )
         }
         spinnerAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner = view.findViewById<Spinner?>(R.id.new_destination_entries_spinner)
-            .apply { adapter = spinnerAdapter }
+//        spinner = view.findViewById<Spinner?>(R.id.new_destination_entries_spinner)
+//            .apply { adapter = spinnerAdapter }
     }
 
     private fun openGalleryForResult() {

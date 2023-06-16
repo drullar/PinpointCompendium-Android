@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination_name_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Place/City/Memory"
+        android:layout_gravity="center"
+        android:textAlignment="center">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination_description_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/destination_description_hint"
+        android:layout_gravity="center"
+        android:layout_below="@id/destination_name_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_description_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/add_album_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_album"
+        android:layout_below="@id/destination_description_input_layout"
+        />
+</RelativeLayout>
