@@ -7,11 +7,11 @@ import androidx.fragment.app.FragmentContainerView
 
 abstract class BaseActivity : FragmentChangeListener, AppCompatActivity() {
 
-    override fun addFragment(fragmentId: Int, fragment: Fragment) {
+    override fun addFragment(fragmentContainerId: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .setReorderingAllowed(true)
             .addToBackStack(null)
-            .add(fragmentId, fragment)
+            .add(fragmentContainerId, fragment)
             .commit()
     }
 

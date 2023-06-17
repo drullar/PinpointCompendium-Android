@@ -90,21 +90,21 @@ class NewDestinationFragment : Fragment() {
 //        }
 //    }
 
-    private fun submitDestination(v: View) {
-        Log.v("ButtonClick", "Submit destination button clicked")
-        var destinationNameTextView =
-            view?.findViewById<TextInputEditText>(R.id.destination_name_input)
-        var destinationName = destinationNameTextView?.text
-        if (destinationName != null) {
-            Destination().apply {
-                name = destinationName.toString()
-                entries = this@NewDestinationFragment.entries
-            }
-        } else {
-            Toast.makeText(context, "Destination name can not be empty", Toast.LENGTH_SHORT)
-            destinationNameTextView?.requestFocus()
-        }
-    }
+//    private fun submitDestination(v: View) {
+//        Log.v("ButtonClick", "Submit destination button clicked")
+//        var destinationNameTextView =
+//            view?.findViewById<TextInputEditText>(R.id.destination_name_input)
+//        var destinationName = destinationNameTextView?.text
+//        if (destinationName != null) {
+//            Destination().apply {
+//                name = destinationName.toString()
+//                entries = this@NewDestinationFragment.entries
+//            }
+//        } else {
+//            Toast.makeText(context, "Destination name can not be empty", Toast.LENGTH_SHORT)
+//            destinationNameTextView?.requestFocus()
+//        }
+//    }
 
 //    override fun setButtonsOnClickListener(view: View) {
 //        var addEntryButton =

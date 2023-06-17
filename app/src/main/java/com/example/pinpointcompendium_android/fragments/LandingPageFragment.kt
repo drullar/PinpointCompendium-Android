@@ -1,5 +1,6 @@
 package com.example.pinpointcompendium_android.fragments
 
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.pinpointcompendium_android.R
 import com.example.pinpointcompendium_android.activities.BaseActivity
+import com.example.pinpointcompendium_android.helpers.DatabaseHelper
 
 class LandingPageFragment : BaseFragment() {
 
@@ -33,7 +35,10 @@ class LandingPageFragment : BaseFragment() {
                     initFragmentChanger()
                 fragmentChangeListener?.replaceFragment(
                     R.id.main_fragment_container,
-                    NewDestinationFragment()
+                    CreateDestinationFragment(
+                        DatabaseHelper(context),
+                        DatabaseHelper(context).writableDatabase
+                    )
                 )
             }
         }

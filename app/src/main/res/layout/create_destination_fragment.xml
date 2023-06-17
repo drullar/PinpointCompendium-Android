@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -40,6 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_album"
-        android:layout_below="@id/destination_description_input_layout"
-        />
+        android:layout_below="@id/destination_description_input_layout" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/preview_image_container_view"
+        android:layout_width="300dp"
+        android:layout_height="600dp"
+        android:layout_centerInParent="true"
+        tools:layout="@layout/preview_image_fragment" />
 </RelativeLayout>

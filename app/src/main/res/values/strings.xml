@@ -23,5 +23,6 @@
     <string name="album_name">Album name</string>
     <string name="destination_description_hint">Ex. Berlin trip with friends(optional)</string>
     <string name="add_album">Add album</string>
+    <string name="save">Save</string>
 
 </resources>
